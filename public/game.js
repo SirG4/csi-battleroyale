@@ -23,7 +23,7 @@ async function login() {
 
     try {
         // 1. Authentication
-        const authResponse = await fetch('${API_BASE_URL}/login', {
+        const authResponse = await fetch(`${API_BASE_URL}/login`, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({ 
@@ -49,8 +49,8 @@ async function login() {
 
         // 2. Load game data
         const [questionsRes, playerRes] = await Promise.all([
-            fetch(`'${API_BASE_URL}/questions/${currentRoom}`),
-            fetch(`'${API_BASE_URL}/players/${currentUser}/${currentRoom}`)
+            fetch(`${API_BASE_URL}/questions/${currentRoom}`),
+            fetch(`${API_BASE_URL}/players/${currentUser}/${currentRoom}`)
         ]);
 
         // Handle responses safely
@@ -85,7 +85,7 @@ async function login() {
 
 function startHealthMonitor() {
     const healthCheck = setInterval(async () => {
-        const response = await fetch('${API_BASE_URL}/players/${currentUser}/${currentRoom}');
+        const response = await fetch(`${API_BASE_URL}/players/${currentUser}/${currentRoom}`);
         if (response.ok) {
             const data = await response.json();
             
@@ -112,7 +112,6 @@ function updateHealthDisplay(newHealth) {
         document.getElementById('healthValue').classList.remove('health-alert');
     }, 1000);
 }
-
 
 function showAttackNotification() {
     const notification = document.createElement('div');
@@ -185,7 +184,7 @@ async function showQuestion(questionId) {
 async function submitAnswer() {
     const answer = document.getElementById('answer').value.trim();
     
-    const response = await fetch('${API_BASE_URL}/validate-answer', {
+    const response = await fetch(`${API_BASE_URL}/validate-answer`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
@@ -209,7 +208,7 @@ async function submitAnswer() {
 }
 
 async function showAttackList() {
-    const response = await fetch('${API_BASE_URL}/players/${currentRoom}');
+    const response = await fetch(`${API_BASE_URL}/players/${currentRoom}`);
     const players = await response.json();
     
     const container = document.getElementById('players');
@@ -238,10 +237,9 @@ function showActions() {
     document.getElementById('actions').style.display = 'block';
 }
 
-
 async function attack(target) {
     try {
-    const response = await fetch('${API_BASE_URL}/attack', {
+    const response = await fetch(`${API_BASE_URL}/attack`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({ 
@@ -267,10 +265,9 @@ async function attack(target) {
     }
 }
 
-
 async function buyVest() {
     try {
-        const response = await fetch('${API_BASE_URL}/buy-vest', {
+        const response = await fetch(`${API_BASE_URL}/buy-vest`, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({ 
@@ -298,7 +295,7 @@ async function buyVest() {
 }
 
 async function updateGameState() {
-    const response = await fetch('${API_BASE_URL}/player/${currentUser}/${currentRoom}');
+    const response = await fetch(`${API_BASE_URL}/player/${currentUser}/${currentRoom}`);
     const state = await response.json();
     
     // Update health display with animation
