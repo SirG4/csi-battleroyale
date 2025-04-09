@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mystical Quiz Battle</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}" sizes="192x192">
+    <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Eagle+Lake&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="starry-bg">
+        <div class="twinkling"></div>
+        <h1 class="mystical-title">
+            <span class="rune">⚔️</span>Arcane Knowledge Duel<span class="rune">🛡️</span>
+        </h1>
+
+        <!-- Login Screen -->
+        <div id="login" class="mystical-box">
+            <div class="ancient-parchment">
+                <h3>Choose Your Warrior Identity</h3>
+                <select id="username" class="ancient-input">
+                    <option value="">Select Username</option>
+                    <option>Dragonheart</option>
+                    <option>Shadowmage</option>
+                    <option>Ironclad</option>
+                    <option>Frostweaver</option>
+                    <option>Stormbringer</option>
+                    <option>Nightshade</option>
+                    <option>Emberblade</option>
+                    <option>Thunderfist</option>
+                    <option>Earthshaker</option>
+                    <option>Voidwalker</option>
+                </select>
+
+                <div class="password-container">
+                    <label>Warrior Password:</label>
+                    <input type="password" id="usernamePassword" class="ancient-input" 
+                           placeholder="Enter warrior's secret code">
+                </div>
+                
+                <h3>Select Battle Arena</h3>
+                <select id="roomId" class="ancient-input">
+                    <option value="">Select Room</option>
+                    <option>Forgotten Crypt</option>
+                    <option>Dragon's Lair</option>
+                    <option>Obsidian Tower</option>
+                    <option>Enchanted Forest</option>
+                    <option>Celestial Observatory</option>
+                    <option>Ancient Ruins</option>
+                    <option>Shadow Realm</option>
+                    <option>Crystal Cavern</option>
+                    <option>Thunder Peak</option>
+                    <option>Frostfire Summit</option>
+                </select>
+                
+                <div class="password-container">
+                    <label>Arena Password:</label>
+                    <input type="password" id="roomPassword" class="ancient-input" 
+                           placeholder="Enter arena's hidden phrase">
+                </div>
+
+                <button id="loginBtn" class="glowing-btn ancient-button" onclick="login()">
+                    Enter the Arena
+                </button>
+            </div>
+        </div>
+
+        <!-- Question Selection -->
+        <div id="questionSelection" class="mystical-box" style="display: none">
+            <h2>Choose Your Challenge</h2>
+            <div class="scroll-container">
+                <div id="questionsList" class="question-list"></div>
+            </div>
+        </div>
+
+        <div class="health-display mystical-box">
+            <h3>Life Force</h3>
+            <div id="healthValue" class="health-number">2</div>
+        </div>
+
+        <!-- Question View -->
+        <div id="questionView" class="mystical-box" style="display: none">
+            <h2 id="questionTitle">
+                <span id="questionDifficulty" class="difficulty-badge"></span>
+            </h2>
+            <button onclick="showQuestion(null)" class="back-btn">Return to Challenges</button>
+            <div class="question-content">
+                <div id="questionText" class="ancient-parchment"></div>
+                
+                <div class="code-container ancient-parchment">
+                    <h3>Forge Your Solution</h3>
+                    <a id="compilerLink" target="_blank" class="glowing-btn">
+                        Open Code Forge <span class="tech-dot"></span>
+                    </a>
+                </div>
+        
+                <div class="answer-container ancient-parchment">
+                    <h3>Inscribe Your Answer</h3>
+                    <input type="text" id="answer" class="ancient-input" />
+                    <button onclick="submitAnswer()" class="glowing-btn"> Submit Answer</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Selection -->
+        <div id="actions" class="mystical-box" style="display: none">
+            <h2>Choose Your Tactics</h2>
+            <div class="action-buttons">
+                <button onclick="showAttackList()" class="glowing-btn combat-button">
+                    ⚔️ Attack Rival
+                </button>
+                <button onclick="buyVest()" class="glowing-btn defense-button">
+                    🛡️ Reinforce Armor (Cost: 1 Victory)
+                </button>
+            </div>
+        </div>
+
+        <!-- Attack List -->
+        <div id="playersList" class="mystical-box" style="display: none">
+            <h2>Select Your Target</h2>
+            <div id="players" class="players-grid"></div>
+            <button onclick="showActions()" class="back-btn">Return to Tactics</button>
+        </div>
+
+        <!-- Game Over -->
+        <div id="gameOver" style="display: none;">
+            <div class="game-over-screen">
+                <h2 class="game-over-text">YOU HAVE FALLEN</h2>
+                <p>The realm has claimed your essence...</p>
+                <div class="restart-message">
+                    <p>Refresh the page to begin anew</p>
+                    <div class="skull">💀</div>
+                </div>
+            </div>
+        </div>
+
+    <script src="{{ url_for('static', filename='game.js') }}"></script>
+</body>
+</html>

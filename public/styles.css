@@ -1,0 +1,322 @@
+/* styles.css */
+
+/* Global Styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Eagle Lake', cursive;
+    background-color: #0d0d0d;
+    color: #e0e0e0;
+    height: 100%;
+    width: 100%;
+}
+
+/* Starry Background & Twinkling Effect */
+.starry-bg {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+    overflow: hidden;
+}
+.twinkling {
+    background: transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.5;
+    z-index: 1;
+    /* The following uses a simple animation for twinkling effect */
+    background-image: radial-gradient(white, rgba(255,255,255,0));
+    background-size: 3px 3px;
+    animation: twinkling 200s linear infinite;
+}
+@keyframes twinkling {
+    from { transform: translateY(0); }
+    to { transform: translateY(-1000px); }
+}
+
+/* Title and Headings */
+.mystical-title {
+    font-family: 'UnifrakturMaguntia', cursive;
+    font-size: 3rem;
+    text-align: center;
+    margin: 2rem 0;
+    z-index: 2;
+    position: relative;
+    text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
+}
+.mystical-title .rune {
+    font-size: 1.5rem;
+}
+
+/* Container Boxes */
+.mystical-box {
+    background: rgba(20, 20, 30, 0.8);
+    border: 2px solid #4a4a7d;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin: 1rem auto;
+    width: 90%;
+    max-width: 600px;
+    z-index: 2;
+    position: relative;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Parchment-Style Panels */
+.ancient-parchment {
+    background: #f5f0e6;
+    color: #3b2e2b;
+    padding: 1rem;
+    border: 1px solid #d2c0a3;
+    border-radius: 5px;
+    font-family: 'Eagle Lake', cursive;
+    margin-bottom: 1rem;
+}
+
+/* Inputs */
+.ancient-input {
+    width: 95%;
+    padding: 0.8rem;
+    margin: 0.5rem 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: 'Eagle Lake', cursive;
+}
+
+/* Buttons */
+.glowing-btn {
+    display: inline-block;
+    background: #6a0dad;
+    color: #fff;
+    padding: 0.8rem 1.2rem;
+    margin: 0.5rem 0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-family: 'Eagle Lake', cursive;
+    transition: box-shadow 0.3s ease;
+}
+.glowing-btn:hover {
+    box-shadow: 0 0 10px #6a0dad, 0 0 20px #6a0dad;
+}
+
+/* Password Container */
+.password-container {
+    margin: 1rem 0;
+    width: 95%;
+}
+
+/* Scrollable List for Questions */
+.scroll-container {
+    max-height: 300px;
+    overflow-y: auto;
+    margin: 1rem 0;
+}
+.question-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.question-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+.question-item:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Health Display */
+.health-display {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(20, 20, 30, 0.9);
+    border: 2px solid #ff0000;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+}
+.health-display h3 {
+    margin: 0;
+    font-size: 0.8rem;
+    color: #ff8080;
+}
+.health-number {
+    font-size: 1.5rem;
+    font-weight: bold;
+    transition: transform 0.3s;
+}
+.health-alert {
+    transform: scale(1.2);
+}
+
+/* Difficulty Badge */
+.difficulty-badge {
+    background: #ff4500;
+    color: #fff;
+    padding: 0.3rem 0.6rem;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    margin-right: 0.5rem;
+}
+
+/* Back Button */
+.back-btn {
+    background: transparent;
+    border: none;
+    color: #6a0dad;
+    text-decoration: underline;
+    cursor: pointer;
+    margin: 1rem 0;
+    font-family: 'Eagle Lake', cursive;
+}
+
+/* Code & Answer Containers */
+.code-container {
+    margin: 1rem 0;
+}
+.tech-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: #6a0dad;
+    border-radius: 50%;
+    margin-left: 0.3rem;
+}
+.answer-container {
+    margin: 1rem 0;
+}
+
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+.combat-button, .defense-button {
+    flex: 1 1 45%;
+}
+
+/* Players Grid */
+.players-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0;
+}
+.player-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+.player-card:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Game Over Screen */
+.game-over-screen {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid #ff0000;
+    border-radius: 10px;
+    margin: 2rem auto;
+    width: 90%;
+    max-width: 600px;
+    z-index: 10;
+    position: relative;
+}
+.game-over-text {
+    font-size: 2rem;
+    color: #ff0000;
+    margin-bottom: 1rem;
+}
+.restart-message {
+    margin-top: 1rem;
+    font-size: 1rem;
+    color: #ccc;
+}
+.skull {
+    font-size: 2rem;
+    margin-top: 0.5rem;
+}
+
+/* Attack Notification */
+.attack-notification {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 0, 0, 0.8);
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    z-index: 100;
+    animation: fadeInOut 5s forwards;
+}
+@keyframes fadeInOut {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* General Notifications */
+.notification {
+    position: fixed;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #6a0dad;
+    color: #fff;
+    padding: 0.8rem 1.2rem;
+    border-radius: 5px;
+    z-index: 100;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .mystical-title {
+        font-size: 2rem;
+        margin: 1rem 0;
+    }
+    .mystical-box {
+        width: 95%;
+        padding: 1rem;
+    }
+    .health-display {
+        width: 60px;
+        height: 60px;
+        top: 0.5rem;
+        right: 0.5rem;
+    }
+    .health-number {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .action-buttons {
+        flex-direction: column;
+    }
+    .combat-button, .defense-button {
+        flex: 1 1 100%;
+    }
+}
