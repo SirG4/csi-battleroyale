@@ -1,13 +1,7 @@
 {
   "version": 2,
-  "routes": [
-    {
-      "src": "/.*",
-      "dest": "/index.html"
-    },
-    {
-      "handle": "filesystem"
-    }
-  ],
-  "cleanUrls": true
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
 }
