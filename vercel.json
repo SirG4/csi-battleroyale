@@ -9,6 +9,5 @@
       "handle": "filesystem"
     }
   ],
-  "public": "public",
   "cleanUrls": true
 }
