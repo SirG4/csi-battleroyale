@@ -18,7 +18,16 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy()
 db.init_app(app)  
 
-CORS(app)
+# In app.py
+CORS(app, origins=[
+    "https://csi-battleroyale.vercel.app",
+    "http://localhost:5000"  # For local dev
+])
+
+CORS(app, resources={r"/*": {"origins": [
+    "https://csi-battleroyale.vercel.app",  # Production
+    "http://localhost:5000"
+]}})
 
 # Database connection verification function
 # In app.py, update database initialization
@@ -31,17 +40,6 @@ def verify_db_connection():
     except Exception as e:
         print(f"❌ Database verification failed: {str(e)}")
         return False
-    
-@app.route('/favicon.ico')
-def favicon():
-    return send_from_directory(os.path.join(app.root_path, 'public'),
-                               'favicon.ico', mimetype='image/vnd.microsoft.icon')
-
-@app.route('/favicon.png')
-def favicon_png():
-    return send_from_directory(os.path.join(app.root_path, 'public'),
-                              'favicon.png', 
-                              mimetype='image/png')
     
 # Hardcoded passwords (modify these as needed)
 USER_PASSWORDS = {
